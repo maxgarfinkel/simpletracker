@@ -10,11 +10,11 @@ const Tracker = () => {
     const [trackingIntervalId, setTrackingIntervalId] = useState();
     const [lastLocation, setLastLocation] = useState("");
 
-    const postLocation = (username, lat, long) => {
+    const postLocation = (user, lat, long) => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, lat, long })
+            body: JSON.stringify({ user, lat, long })
         };
         fetch('/.netlify/functions/save-location', requestOptions)
             .then(response => response.json())

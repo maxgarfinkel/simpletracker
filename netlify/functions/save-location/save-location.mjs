@@ -16,10 +16,10 @@ export const handler = withPlanetscale(async (event, context) => {
 
   const { user, lat, long } = JSON.parse(body);
 
-  await connection.execute("INSERT INTO locations (user, lat, long) VALUES (?, ?, ?)", [
-    user,
+  await connection.execute("INSERT INTO locations (`lat`, `long`, `user`) VALUES (?, ?, ?)", [
     lat,
-    long
+    long,
+    user
   ]);
 
   return {
