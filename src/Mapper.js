@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import {Button, TextField} from "@mui/material";
+import Map, {Marker} from 'react-map-gl';
 
 const Mapper = () => {
-
     const [user, setUser] = useState("");
     const [locations, setLocations] = useState([]);
 
@@ -33,6 +33,23 @@ const Mapper = () => {
             </Button>
             { locations && locations.length > 0 &&
                 <div>
+
+                    <div>
+                        <Map
+                            mapLib={import('mapbox-gl')}
+                            initialViewState={{
+                                longitude: locations[0].long,
+                                latitude: locations[0].lat,
+                                zoom: 10
+                            }}
+                            style={{width: '90vw', height: '90vh'}}
+                            mapStyle="mapbox://styles/mapbox/streets-v9"
+                            mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                        >
+                            <Marker longitude={locations[0].long} latitude={locations[0].lat} color="red"  />
+                        </Map>
+                    </div>
+
                 {locations.map((location, i) => {
                     return(<div key={location.timestamp + i}>
                         latitude: {location.lat},
