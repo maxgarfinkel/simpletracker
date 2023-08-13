@@ -52,18 +52,16 @@ const Tracker = () => {
     console.log("My ID:", id);
 
     return (
-        <div>
-            <header className="App-header">
-                <TextField value={id} onChange={e => setId(e.target.value)} id="outlined-basic" label="Outlined" variant="outlined" />
+        <>
+            <TextField value={id} onChange={e => setId(e.target.value)} id="outlined-basic" label="Outlined" variant="outlined" />
 
-                <Button onClick={e => setTrackingProxy()}>
-                    { tracking ? "Stop" : "Start" }  tracking me
-                </Button>
-            </header>
+            <Button onClick={e => setTrackingProxy()}>
+                { tracking ? "Stop" : "Start" }  tracking me
+            </Button>
             <p>
                 {lastLocation}
             </p>
-        </div>
+        </>
     );
 }
 
