@@ -20,7 +20,7 @@ export const handler = withPlanetscale(async (event, context) => {
 
   console.log(user);
 
-  const data = await connection.execute("SELECT * FROM locations WHERE user='Max' ORDER BY timestamp DESC", [user]);
+  const data = await connection.execute("SELECT * FROM locations WHERE user=? ORDER BY timestamp DESC", [user]);
 
   if(!data.rows[0]) {
     console.log(rows);
