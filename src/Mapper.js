@@ -1,6 +1,9 @@
 import {useState} from 'react';
 import {Button, TextField} from "@mui/material";
 import Map, {Marker} from 'react-map-gl';
+import mapboxgl from 'mapbox-gl';
+// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const Mapper = () => {
     const [user, setUser] = useState("");
